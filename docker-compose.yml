@@ -1,0 +1,29 @@
+services:
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo_data:/data/db
+
+  api:
+    build: 
+      context: .
+      dockerfile: backend.Dockerfile
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongo
+    env_file: .env 
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/proshop
+
+  web:
+    build: ./frontend
+    ports:
+      - 3000:80
+    depends_on:
+      - api
+
+volumes:
+  mongo_data:
