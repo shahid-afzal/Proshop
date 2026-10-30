@@ -29,3 +29,10 @@ uploads/*jpg
 
 # API tests
 http
+
+#Terraform
+
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/.terraform.lock.hcl
