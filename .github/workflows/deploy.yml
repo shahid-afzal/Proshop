@@ -23,10 +23,14 @@ jobs:
 
       - name: Restart Docker Containers
         uses: appleboy/ssh-action@master
+        env:
+          ENV_FILE: ${{ secrets.ENV_FILE }}
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
+          envs: ENV_FILE
           script: |
             cd /home/ubuntu/Proshop
+            echo "$ENV_FILE" > .env
             docker compose up --build -d
