@@ -33,4 +33,4 @@ jobs:
           script: |
             cd /home/ubuntu/Proshop
             echo "$ENV_FILE" > .env
-            docker compose up --build -d
+            sudo docker compose up --build -d
