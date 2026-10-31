@@ -2,16 +2,14 @@ services:
   mongo:
     image: mongo
     ports:
-      - 27017:27017
+      - "27017:27017"
     volumes:
       - mongo_data:/data/db
 
   api:
-    build: 
-      context: .
-      dockerfile: backend.Dockerfile
+    image: shahidafzal/proshop-api:latest
     ports:
-      - 5000:5000
+      - "5000:5000"
     depends_on:
       - mongo
     env_file: .env 
@@ -19,9 +17,9 @@ services:
       - MONGO_URI=mongodb://mongo:27017/proshop
 
   web:
-    build: ./frontend
+    image: shahidafzal/proshop-web:latest
     ports:
-      - 3000:80
+      - "3000:80"
     depends_on:
       - api
 
