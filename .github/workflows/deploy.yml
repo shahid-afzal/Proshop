@@ -42,7 +42,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
           REMOTE_HOST: ${{ secrets.EC2_HOST }}
           REMOTE_USER: ${{ secrets.EC2_USER }}
-          SOURCE: "docker-compose.yml"
+          SOURCE: "docker-compose.yml nginx.conf"
           TARGET: "/home/ubuntu/Proshop/"
 
       - name: Pull and Restart Docker Containers
